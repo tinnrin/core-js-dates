@@ -56,7 +56,7 @@ function getDayName(date) {
     'Friday',
     'Saturday',
   ];
-  const day = new Date(date).getDay();
+  const day = new Date(date).getUTCDay();
   return dayNames[day];
 }
 
@@ -168,7 +168,7 @@ function getCountWeekendsInMonth(month, year) {
   let weekdaysCount = 0;
 
   for (let i = 1; i <= totalDays; i += 1) {
-    const dayOfWeek = new Date(year, month - 1, i).getDay();
+    const dayOfWeek = new Date(year, month - 1, i).getUTCDay();
     if (dayOfWeek === 0 || dayOfWeek === 6) {
       weekdaysCount += 1;
     }
@@ -230,7 +230,7 @@ function getNextFridayThe13th(date) {
   let month = curMonth;
   while (!fridayThe13) {
     const d = new Date(year, month, 13);
-    if (d.getUTCDay() === 4) {
+    if (d.getUTCDay() === 5) {
       fridayThe13 = d;
     }
     month += 1;
